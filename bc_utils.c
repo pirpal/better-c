@@ -1,18 +1,17 @@
-#include "cb_utils.h"
-#include "cb_errors.h"
 #include <stdio.h>
 #include <string.h>
 
+#include "bc_utils.h"
+#include "bc_errors.h"
+
+
 
 FILE*
-openFile(const char* path, const char* mode)
+openFile(const str path, const str mode)
 {
   FILE *f = fopen(path, mode);
   if (f == NULL) {
-    errExit(err_FileHandling,
-             "cb_fopen",
-             "failed to open file with given PATH",
-             NULL);
+    errExit(err_File, "openFile", "Failed to open file with PATH:\n", path, NULL);
   }
   return f;
 }
@@ -22,19 +21,18 @@ void
 closeFile(FILE *f)
 {
   if ((fclose(f)) != 0) {
-    errExit(err_FileHandling,
-             "cb_fclose",
-             "failed to close given FILE*",
-             NULL);
+    errExit(err_File, "closeFile", "Failed to close given FILE*\n", NULL);
   }
   return;
 }
 
 
-// Often needed boolean functions
-bool maxcharCheck(const char *s, const int maxchar)
+void
+maxcharCheck(const str s, const int maxchar)
 {
-  return ((int) strlen(s) < maxchar);
+  if (strlen(s) >= maxchar) {
+    errExit(err_Maxchar, "maxcharCheck", "String length exceeds MAXCHAR\n", NULL);
+  }
 }
 
 

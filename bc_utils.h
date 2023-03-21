@@ -1,13 +1,19 @@
-#ifndef CB_UTILS_H_
-#define CB_UTILS_H_
+#ifndef BC_UTILS_H_
+#define BC_UTILS_H_
 
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-FILE* openFile(const char* path, const char* mode);
+#define BC_TYPES_IMPLEMENTATION
+#include "bc_types.h"
+
+
+
+FILE* openFile(const str path, const str mode);
+
 void closeFile(FILE *f);
-bool maxcharCheck(const char *s, const int maxchar);
+
+void maxcharCheck(const str s, const int maxchar);
 
 
-#endif // CB_UTILS_H_
+#endif // BC_UTILS_H_
