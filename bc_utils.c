@@ -30,7 +30,7 @@ closeFile(FILE *f)
 void
 maxcharCheck(const str s, const int maxchar)
 {
-  if (strlen(s) >= maxchar) {
+  if ((int) strlen(s) >= maxchar) {
     errExit(err_Maxchar, "maxcharCheck", "String length exceeds MAXCHAR\n", NULL);
   }
 }
