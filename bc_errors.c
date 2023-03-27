@@ -26,7 +26,7 @@ errExit(const ErrT err_t, const char *f_name, ...)
   } else {
     fprintf(stderr,
 	    "[ERR] %s raised in function: '%s'\n",
-	    ERROR_T_STR[err_t],
+	    ERROR_T_STR[err_t - 1], // -1 because first ErrT is 1, not 0
 	    f_name);
   }
 
